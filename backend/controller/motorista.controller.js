@@ -91,15 +91,76 @@ const consultar = async (req, res) => {
     }
 }
 
-const atualizar = async(req,res)=>{
+const atualizar = async (req, res) => {
     const id = req.params.id
     const valores = req.body
 
     try {
+        const motorista = await Motorista.findByPk(id)
+        if (!motorista) {
+            return res.status(404).json({ message: 'Motorista não encontrado' })
+        }
+        const dadosAtualizados = { ...valores }
+
+        if (valores.cpf) {
+            if (valores.cpf.length !== 11) {
+                return res.status(400).json({ message: 'O CPF deve conter exatamente 11 digitos' })
+            }
+
+            dadosAtualizados.cpf = CryptoJS.AES.encrypt(valores.cpf, CHAVE_SECRETA).toString()
+        }
+            if (valores.senha) {
+                dadosAtualizados.senha = CryptoJS.AES.encrypt(valores.senha, CHAVE_SECRETA).toString()
+            }
+
+            await Motorista.update(dadosAtualizados, { where: { codMotorista: id } })
+            return res.status(200).json({ message: 'Motorista atualizado com sucesso' })
+        } catch (err) {
+            console.error('Erro ao atualizar motorista', err)
+            return res.status(500).json({ message: 'Erro ao atualizar motorista' })
+        }
+    } 
         
-    } catch (error) {
-        
+const apagar = async(req,res)=>{
+    const id = req.params.id
+    try {
+        const motorista = await Motorista.findByPk(id)
+        if (!motorista) {
+            return res.status(404).json({message: 'Motorista nao encontrado'})
+        }
+
+        await Motorista.destroy({where: {codMotorista: id}})
+        return res.status(200).json({message: 'motorista excluido com sucesso'})
+    } catch (err) {
+        console.error('Erro ao apagar motorista',err)
+        return res.status(500).json({message: 'Erro ao apagar o motorista'})
     }
 }
 
-module.exports = { cadastrar, listar }
+const consultarPorNome = async(req,res)=>{
+    const nome = req.params.nome
+
+    try {
+        const motorista = await Motorista.findOne({where: {nome: nome}})
+
+        if(!motorista){
+            return res.status(404).json({message: 'Motorista nao encontrado'})
+        }
+
+        const bytes = CryptoJS.AES.decrypt(motorista.cpf, CHAVE_SECRETA)
+        const cpfDescriptografado = bytes.toString(CryptoJS.enc.Utf8)
+
+        return res.status(200).json({
+            codMotorista: motorista.codMotorista,
+            nome: motorista.nome,
+            CNH: motorista.CNH,
+            cpf:cpfDescriptografado,
+            telefone: motorista.telefone
+        })
+    } catch (err) {
+        console.error('Erro ao consultar o motorisa por nome:',err)
+        return res.status(500).json({message: 'erro ao consultar motorista por nome'})
+    }
+}
+
+module.exports = { cadastrar, listar, consultar, atualizar, apagar, consultarPorNome }
