@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_cad.css">
+    <script src="../js/entrega_listar.js" defer></script>
+    <title>Listar entregas - Logística Express</title>
+</head>
+<body>
+<header><nav>
+    <a href="../index.html">Início</a>
+    <a href="./login.html">Login</a>
+    <a href="./funcionario_cadastrar.html">Funcionários</a>
+    <a href="./motorista_listar.html">Motoristas</a>
+    <a href="./carga_cadastrar.html">Cargas</a>
+    <a href="./entrega_listar.html">Entregas</a>
+    <span id="verificar_log"></span>
+</nav></header>
+<main>
+    <h1>Entregas cadastradas</h1>
+    <p class="intro">A listagem permite filtrar por período e ordenar as entregas pela data.</p>
+    
+<div class="toolbar"><div class="campo"><label for="data_inicio">Data inicial (opcional)</label><input type="date" id="data_inicio"></div><div class="campo"><label for="data_fim">Data final (opcional)</label><input type="date" id="data_fim"></div><button type="button" id="btn_listar">Listar entregas</button></div>
+<div id="tabela" class="tabela"></div>
+<p><a class="button" href="./entrega_cadastrar.html">Cadastrar entrega</a> <a class="button" href="./entrega_atualizar.html">Atualizar entrega</a></p>
+
+    <div id="resposta" class="resposta" aria-live="polite"></div>
+</main>
+<footer>Logística Express · Sistema interno de gestão e rastreamento</footer>
+</body>
+</html>

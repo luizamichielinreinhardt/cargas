@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_cad.css">
+    <script src="../js/login.js" defer></script>
+    <title>Login - Logística Express</title>
+</head>
+<body>
+<header><nav>
+    <a href="../index.html">Início</a>
+    <a href="./login.html">Login</a>
+    <a href="./funcionario_cadastrar.html">Funcionários</a>
+    <a href="./motorista_listar.html">Motoristas</a>
+    <a href="./carga_cadastrar.html">Cargas</a>
+    <a href="./entrega_listar.html">Entregas</a>
+    <span id="verificar_log"></span>
+</nav></header>
+<main>
+    <h1>Login no sistema</h1>
+    <p class="intro">Entre com o e-mail e a senha do funcionário cadastrado.</p>
+    
+<form id="form_login">
+<label for="email">E-mail do funcionário</label><input type="email" id="email" required>
+<label for="senha">Senha</label><input type="password" id="senha" required>
+<button type="submit">Entrar</button>
+</form>
+<p class="intro">A sessão deve expirar após 180 minutos. Esse prazo precisa ser configurado no backend.</p>
+
+    <div id="resposta" class="resposta" aria-live="polite"></div>
+</main>
+<footer>Logística Express · Sistema interno de gestão e rastreamento</footer>
+</body>
+</html>

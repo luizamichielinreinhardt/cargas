@@ -1,4 +1,3 @@
-
 const Entrega = require('../models/Entrega')
 const Carga = require('../models/Carga')
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_cad.css">
+    <script src="../js/motorista_listar.js" defer></script>
+    <title>Listar motoristas - Logística Express</title>
+</head>
+<body>
+<header><nav>
+    <a href="../index.html">Início</a>
+    <a href="./login.html">Login</a>
+    <a href="./funcionario_cadastrar.html">Funcionários</a>
+    <a href="./motorista_listar.html">Motoristas</a>
+    <a href="./carga_cadastrar.html">Cargas</a>
+    <a href="./entrega_listar.html">Entregas</a>
+    <span id="verificar_log"></span>
+</nav></header>
+<main>
+    <h1>Motoristas cadastrados</h1>
+    <p class="intro">As consultas são apresentadas em tabela.</p>
+    
+<div class="toolbar"><div class="campo"><label for="nome_busca">Buscar por nome</label><input type="search" id="nome_busca" placeholder="Nome do motorista"></div><button type="button" id="btn_buscar">Buscar</button><button type="button" id="btn_listar">Listar todos</button></div>
+<div id="tabela" class="tabela"></div>
+<p><a class="button" href="./motorista_consultar_codigo.html">Consultar por código</a> <a class="button" href="./motorista_atualizar.html">Atualizar</a> <a class="button" href="./motorista_apagar.html">Excluir</a></p>
+
+    <div id="resposta" class="resposta" aria-live="polite"></div>
+</main>
+<footer>Logística Express · Sistema interno de gestão e rastreamento</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style_cad.css">
+    <script src="../js/funcionario_cadastrar.js" defer></script>
+    <title>Cadastro de funcionário - Logística Express</title>
+</head>
+<body>
+<header><nav>
+    <a href="../index.html">Início</a>
+    <a href="./login.html">Login</a>
+    <a href="./funcionario_cadastrar.html">Funcionários</a>
+    <a href="./motorista_listar.html">Motoristas</a>
+    <a href="./carga_cadastrar.html">Cargas</a>
+    <a href="./entrega_listar.html">Entregas</a>
+    <span id="verificar_log"></span>
+</nav></header>
+<main>
+    <h1>Cadastrar funcionário</h1>
+    <p class="intro">A senha deve ser criptografada no backend antes de ser armazenada.</p>
+    
+<form id="form_funcionario">
+<label for="nome">Nome completo</label><input type="text" id="nome" required>
+<label for="email">E-mail</label><input type="email" id="email" required>
+<label for="senha">Senha</label><input type="password" id="senha" minlength="8" required>
+<button type="submit">Cadastrar funcionário</button>
+</form>
+
+    <div id="resposta" class="resposta" aria-live="polite"></div>
+</main>
+<footer>Logística Express · Sistema interno de gestão e rastreamento</footer>
+</body>
+</html>
